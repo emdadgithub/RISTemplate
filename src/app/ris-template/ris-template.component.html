@@ -1,19 +1,99 @@
 <h1>RIS Template</h1>
 
-<div class="ui-fluid">
-  <p-panel>
-    <p-header>Dynamic Control Information</p-header>
-    <div class="ui-g form-group">
-      <div class="ui-g-12 ui-md-2">
-        <label for="FnameNls">Control Type</label>
-      </div>
-      <div class="ui-g-12 ui-md-4">
-        <span class="md-inputfield">
-            <p-dropdown id="CountryId" [options]="controlTypes" optionLabel="label" class="select-100" placeholder="Select control type"        
-            [showClear]="true"  filter="true"></p-dropdown>
-        </span>
+<button pButton type="button" label="Add New" (click)="showAddControl()"></button>
+
+<p-table [columns]="cols" [value] = "controlList">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+            <th>Action</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+            <td *ngFor="let col of columns">
+                    {{rowData[col.field]}}
+            </td>
+            <td>
+                <button type="button" pButton icon="pi pi-check" (click)="addControlValues()" label="Yes" ></button>
+                <button type="button" pButton icon="pi pi-close" (click)="display = false" label="No" class="ui-button-secondary"></button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<p-dialog
+  header="Control Information"
+  [(visible)]="displayControlInformation"
+  [width]="1100"
+  [modal]="true" [responsive]="true" [contentStyle]="{ 'max-height': '500px', 'min-height': '300px','overflow-y': 'auto' }"
+  [minY]="70" [height]="400" [minHeight]="400" [maximizable]="false"
+>
+  <div class="ui-fluid">
+      <div class="ui-g form-group">
+        <div class="ui-g-12 ui-md-2">
+          <label for="FnameNls">Control Type</label>
+        </div>
+        <div class="ui-g-12 ui-md-4">
+          <span class="md-inputfield">
+            <p-dropdown id="CountryId" [options]="controlTypes" optionLabel="label" class="select-100" placeholder="Select control type"
+              [showClear]="true" filter="true" [(ngModel)]="controlType" (onChange)="selectControl()"></p-dropdown>
+          </span>
+        </div>
+
+        <div class="ui-g-12 ui-md-2">
+            <label for="FnameNls">Control Name</label>
+          </div>
+          <div class="ui-g-12 ui-md-4">
+            <span class="md-inputfield">
+                <input type="text" pInputText [(ngModel)]="controlName" />
+            </span>
+          </div>
+
+          <div class="ui-g-12 ui-md-2">
+
+          </div>
+          <div class="ui-g-12 ui-md-4">
+              <p-checkbox binary="true" label="Is Required"></p-checkbox>
+          </div>
       </div>
 
-    </div>
-  </p-panel>
-</div>
+      <div class="ui-g form-group" *ngIf = "control === 'R'">
+          <div class="ui-g-12 ui-md-2">
+              <label for="FnameNls">Options</label>
+          </div>
+          <div class="ui-g-12 ui-md-4">
+            <span class="md-inputfield">
+                <input type="text" pInputText [(ngModel)]="optionName" />
+            </span>
+          </div>
+          <div class="ui-g-12 ui-md-2">
+              <button pButton type="button" label="Add Options" (click) = "addOptions()"></button>
+          </div>
+          <div class="ui-g-12 ui-md-2"></div>
+
+          <div class="ui-g-12 ui-md-4">
+            <ul>
+              <li *ngFor="let option of options">
+                {{option.label}}  <button style="max-width:100px" pButton type="button" label="Delete" (click) = "deleteOption(option)"></button>
+              </li>
+            </ul>
+          </div>
+      </div> 
+<!-- 
+      <div *ngIf="control === 'T'">
+        <label>Please write your control name</label>
+        <input type="text" pInputText [(ngModel)]="controlName" />
+        <p-checkbox binary="true"></p-checkbox>
+      </div> -->
+
+      <!-- <button pButton type="button" label="Add Control" (click) = "addControlValues()"></button> -->
+  </div>
+
+  <p-footer>
+    <button type="button" pButton icon="pi pi-check" (click)="addControlValues()" label="Add" ></button>
+    <button type="button" pButton icon="pi pi-close" (click)="display = false" label="Cancel" class="ui-button-secondary"></button>
+  </p-footer>
+</p-dialog>
