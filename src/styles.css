@@ -70,6 +70,9 @@ h1{
 .pd-0{
   padding: 0;
 }
+.mb-5{
+  margin-bottom: 5px;
+}
 .mb-10{
   margin-bottom: 10px;
 }
@@ -131,4 +134,8 @@ h1{
   background-color: #005b9f;
     color: #ffffff;
     border-color: #005b9f;
+}
+.dynamic-form .form-check{
+  float: left;
+  margin-right: 10px;
 }

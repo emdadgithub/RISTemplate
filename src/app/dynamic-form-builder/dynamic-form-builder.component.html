@@ -1,11 +1,12 @@
-<div style="margin-bottom:5px">
+<div class="mb-5">
     <p-panel header="Dynamic Form Control">
         <form (ngSubmit)="onSubmit.emit(this.form.value)" [formGroup]="form" class="form-horizontal">
             <div *ngFor="let field of fields">
                 <field-builder [field]="field" [form]="form"></field-builder>
             </div>
-          
-            <button pButton type="submit"  class="ui-button-info">Save</button>
+
+            <button icon="fa fa-check" pButton type="submit"  class="ui-button-info" label="Save"></button>
+            <div class="clearfix"></div>
           </form>
     </p-panel>
 </div>
@@ -21,7 +22,7 @@
 <div class="form-group row">
   <div class="col-md-3"></div>
   <div class="col-md-9">
-    <button pButton type="submit"  class="ui-button-info">Save</button> 
+    <button pButton type="submit"  class="ui-button-info">Save</button>
     <strong >Saved all values</strong>
   </div>
 </div>

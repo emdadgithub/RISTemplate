@@ -74,14 +74,14 @@
             </span>
           </div>
           <div class="ui-g-12 ui-md-2">
-              <button pButton type="button" label="Add Options" (click) = "addOptions()"></button>
+              <button icon="fa fa-plus" pButton type="button" label="Add Options" (click) = "addOptions()"></button>
           </div>
           <div class="ui-g-12 ui-md-2"></div>
 
           <div class="ui-g-12 ui-md-4">
             <ul>
-              <li *ngFor="let option of options">
-                {{option.label}}  <button style="max-width:100px" pButton type="button" label="Delete" (click) = "deleteOption(option)"></button>
+              <li class="mb-5" *ngFor="let option of options">
+                {{option.label}}  <button class="ui-button-info" pButton type="button" icon="fa fa-remove" (click) = "deleteOption(option)"></button>
               </li>
             </ul>
           </div>
