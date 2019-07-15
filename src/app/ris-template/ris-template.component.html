@@ -1,6 +1,10 @@
 <h1>RIS Template</h1>
 
-<button pButton type="button" label="Add New" (click)="showAddControl()"></button>
+<div style="margin-bottom:10px">
+    <button pButton type="button" label="Add New" icon="fa fa-plus" style="margin-right:5px" (click)="showAddControl()"></button>
+    <button pButton type="button" label="Preview" icon="fa fa-eye"></button>
+</div>
+
 
 <p-table [columns]="cols" [value] = "controlList">
     <ng-template pTemplate="header" let-columns>
@@ -8,7 +12,7 @@
             <th *ngFor="let col of columns">
                 {{col.header}}
             </th>
-            <th>Action</th>
+            <th style="width:96px">Action</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-columns="columns">
@@ -17,8 +21,8 @@
                     {{rowData[col.field]}}
             </td>
             <td>
-                <button type="button" pButton icon="pi pi-check" (click)="addControlValues()" label="Yes" ></button>
-                <button type="button" pButton icon="pi pi-close" (click)="display = false" label="No" class="ui-button-secondary"></button>
+                <button type="button" pButton icon="fa fa-pencil" (click)="editDynamicControl(rowData)" style="margin-right:5px" class="ui-button-info" ></button>
+                <button type="button" pButton icon="fa fa-remove" (click)="deleteDynamicControl(rowData)" class="ui-button-info ui-button-danger"></button>
             </td>
         </tr>
     </ng-template>
@@ -60,7 +64,7 @@
           </div>
       </div>
 
-      <div class="ui-g form-group" *ngIf = "control === 'R'">
+      <div class="ui-g form-group" *ngIf = "control === 'R' || control === 'D' || control === 'C'">
           <div class="ui-g-12 ui-md-2">
               <label for="FnameNls">Options</label>
           </div>
@@ -94,6 +98,6 @@
 
   <p-footer>
     <button type="button" pButton icon="pi pi-check" (click)="addControlValues()" label="Add" ></button>
-    <button type="button" pButton icon="pi pi-close" (click)="display = false" label="Cancel" class="ui-button-secondary"></button>
+    <button type="button" pButton icon="pi pi-close" (click)="displayControlInformation = false" label="Cancel" class="ui-button-secondary"></button>
   </p-footer>
 </p-dialog>

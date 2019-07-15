@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LocationStrategy, HashLocationStrategy, CommonModule } from '@angular/common';
@@ -83,6 +84,7 @@ import { AppComponent } from './app.component';
 import { RisTemplateComponent } from './ris-template/ris-template.component';
 import { DynamicFormBuilderModule } from './dynamic-form-builder/dynamic-form-builder.module';
 import { SampleFromComponent } from './sample-from/sample-from.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
    declarations: [
@@ -173,7 +175,17 @@ import { SampleFromComponent } from './sample-from/sample-from.component';
       HttpModule,
       PickListModule,
       ReactiveFormsModule,
-      DynamicFormBuilderModule
+      DynamicFormBuilderModule,
+      RouterModule.forRoot([
+        {
+           path: 'ris-template',
+           component: RisTemplateComponent
+        },
+        {
+            path: 'sample-form',
+           component: SampleFromComponent
+        }
+     ])
    ],
    providers: [],
    bootstrap: [

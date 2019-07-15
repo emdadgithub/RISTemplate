@@ -1,4 +1,4 @@
-<div class="form-group row" [formGroup]="form">
+<!-- <div class="form-group row" [formGroup]="form">
   <label class="col-md-3 form-control-label" [attr.for]="field.label">
     {{field.label}}
     <strong class="text-danger" *ngIf="field.required">*</strong>
@@ -11,4 +11,25 @@
     <file *ngSwitchCase="'file'" [field]="field" [form]="form"></file>
     <div class="alert alert-danger my-1 p-2 fadeInDown animated" *ngIf="!isValid && isDirty">{{field.label}} is required</div>
   </div>
-</div>
+</div> -->
+
+<div class="ui-fluid" [formGroup]="form">
+  <div class="form-group">
+    <div class="ui-g-12 ui-md-2">
+        <label [attr.for]="field.label">
+            {{field.label}}
+            <strong class="text-danger" *ngIf="field.required">*</strong>
+          </label>
+      </div>
+      <div class="ui-g-12 ui-md-4" [ngSwitch]="field.type">
+        <span class="md-inputfield">
+            <textbox *ngSwitchCase="'text'" [field]="field" [form]="form"></textbox>
+            <dropdown *ngSwitchCase="'dropdown'" [field]="field" [form]="form"></dropdown>
+            <checkbox *ngSwitchCase="'checkbox'" [field]="field" [form]="form"></checkbox>
+            <radio *ngSwitchCase="'radio'" [field]="field" [form]="form"></radio>
+            <file *ngSwitchCase="'file'" [field]="field" [form]="form"></file>
+            <div class="alert alert-danger my-1 p-2 fadeInDown animated" *ngIf="!isValid && isDirty">{{field.label}} is required</div>
+        </span>
+      </div>
+    </div>
+  </div>

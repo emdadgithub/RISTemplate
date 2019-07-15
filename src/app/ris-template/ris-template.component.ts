@@ -21,6 +21,7 @@ export class RisTemplateComponent implements OnInit {
   options:ControlOption[] = [];
 
   controlList:DynamicControl[] = [];
+  dynamicControl = {} as DynamicControl;
   cols:any;
   constructor() { }
 
@@ -46,28 +47,45 @@ export class RisTemplateComponent implements OnInit {
   }
 
   addControlValues() {
-    alert('ok');
     let dynamicControl = new DynamicControl();
     dynamicControl.label = this.controlName;
     dynamicControl.type = this.controlType.label;
     dynamicControl.required = true;
     
+    this.dynamicControl.options = this.options;
     this.controlList.push(dynamicControl);
+    console.log(this.dynamicControl);
+  }
+
+  editDynamicControl(rowData:DynamicControl) {
+    this.controlName = rowData.label;
+    this.displayControlInformation = true;
   }
 
   showAddControl() {
     this.displayControlInformation = true;
   }
 
+  closeControlInformation() {
+    this.displayControlInformation = false;
+  }
+
   addOptions() {
     let option = new ControlOption();
     option.label = this.optionName;
+    option.key = this.optionName.split(' ')[0].toString().toLowerCase() + Math.floor(Math.random() * 10) + 1;
     this.options.push(option);
+  }
+
+  deleteDynamicControl(rowData:DynamicControl) {
+    let index = this.controlList.indexOf(rowData);
+    this.controlList.splice(index,1);
   }
 
   deleteOption(option:ControlOption) {
     let index = this.options.indexOf(option);
     this.options.splice(index,1);
+    this.dynamicControl.options = this.options;
+    console.log(this.dynamicControl);
   }
-
 }

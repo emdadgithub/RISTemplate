@@ -8,7 +8,8 @@ import { DropdownComponent } from './dynamic-controls/dropdown/dropdown.componen
 import { FileComponent } from './dynamic-controls/file/file.component';
 import { RadioComponent } from './dynamic-controls/radio/radio.component';
 import { TextboxComponent } from './dynamic-controls/textbox/textbox.component';
-import { RadioButtonModule, DropdownModule, CheckboxModule, InputTextModule } from 'primeng/primeng';
+import {ButtonModule} from 'primeng/button';
+import { RadioButtonModule, DropdownModule, CheckboxModule, InputTextModule, PanelModule } from 'primeng/primeng';
 
 @NgModule({
   imports: [
@@ -17,7 +18,9 @@ import { RadioButtonModule, DropdownModule, CheckboxModule, InputTextModule } fr
     RadioButtonModule,
     DropdownModule,
     CheckboxModule,
-    InputTextModule
+    InputTextModule,
+    ButtonModule,
+    PanelModule
   ],
   declarations: [
      DynamicFormBuilderComponent,
@@ -27,7 +30,6 @@ import { RadioButtonModule, DropdownModule, CheckboxModule, InputTextModule } fr
      FileComponent,
      RadioComponent,
      TextboxComponent,
-
     ],
   exports:[DynamicFormBuilderComponent],
   providers: []
