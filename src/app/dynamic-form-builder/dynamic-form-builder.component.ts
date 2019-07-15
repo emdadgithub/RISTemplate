@@ -14,6 +14,7 @@ export class DynamicFormBuilderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    debugger;
     let fieldsCtrls = {};
     for (let f of this.fields) {
       if (f.type != 'checkbox') {

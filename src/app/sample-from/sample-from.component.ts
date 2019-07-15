@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
@@ -8,71 +8,75 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class SampleFromComponent implements OnInit {
   public form: FormGroup;
-  unsubcribe: any
+  unsubcribe: any;
 
-  public fields: any[] = [
-    {
-      type: 'text',
-      name: 'firstName',
-      label: 'First Name',
-      value: '',
-      required: true,
-    },
-    {
-      type: 'text',
-      name: 'lastName',
-      label: 'Last Name',
-      value: '',
-      required: true,
-    },
-    {
-      type: 'text',
-      name: 'email',
-      label: 'Email',
-      value: '',
-      required: true,
-    },
+  @Input() public fields:any[];
 
-    // {
-    //   type: 'file',
-    //   name: 'picture',
-    //   label: 'Picture',
-    //   required: true,
-    //   onUpload: this.onUpload.bind(this)
-    // },
-    {
-      type: 'dropdown',
-      name: 'country',
-      label: 'Country',
-      //value: 'in',
-      required: true,
-      options: [
-        { key: 'in', label: 'India' },
-        { key: 'us', label: 'USA' }
-      ]
-    },
-    {
-      type: 'radio',
-      name: 'gender',
-      label: 'Gender',
-      value: 'in',
-      required: true,
-      options: [
-        { key: 'm', label: 'Male' },
-        { key: 'f', label: 'Female' }
-      ]
-    },
-    {
-      type: 'checkbox',
-      name: 'hobby',
-      label: 'Hobby',
-      required: true,
-      options: [
-        { key: 'f', label: 'Fishing' },
-        { key: 'c', label: 'Cooking' }
-      ]
-    }
-  ];
+  
+
+  // public fields: any[] = [
+  //   {
+  //     type: 'text',
+  //     name: 'firstName',
+  //     label: 'First Name',
+  //     value: '',
+  //     required: true,
+  //   },
+  //   {
+  //     type: 'text',
+  //     name: 'lastName',
+  //     label: 'Last Name',
+  //     value: '',
+  //     required: true,
+  //   },
+  //   {
+  //     type: 'text',
+  //     name: 'email',
+  //     label: 'Email',
+  //     value: '',
+  //     required: true,
+  //   },
+
+  //   // {
+  //   //   type: 'file',
+  //   //   name: 'picture',
+  //   //   label: 'Picture',
+  //   //   required: true,
+  //   //   onUpload: this.onUpload.bind(this)
+  //   // },
+  //   {
+  //     type: 'dropdown',
+  //     name: 'country',
+  //     label: 'Country',
+  //     //value: 'in',
+  //     required: true,
+  //     options: [
+  //       { key: 'in', label: 'India' },
+  //       { key: 'us', label: 'USA' }
+  //     ]
+  //   },
+  //   {
+  //     type: 'radio',
+  //     name: 'gender',
+  //     label: 'Gender',
+  //     value: 'in',
+  //     required: true,
+  //     options: [
+  //       { key: 'm', label: 'Male' },
+  //       { key: 'f', label: 'Female' }
+  //     ]
+  //   },
+  //   {
+  //     type: 'checkbox',
+  //     name: 'hobby',
+  //     label: 'Hobby',
+  //     required: true,
+  //     options: [
+  //       { key: 'f', label: 'Fishing' },
+  //       { key: 'c', label: 'Cooking' }
+  //     ]
+  //   }
+  // ];
 
   constructor() {
     this.form = new FormGroup({
@@ -99,6 +103,8 @@ export class SampleFromComponent implements OnInit {
  
 
   ngOnInit() {
+    debugger;
+    console.log(this.fields);
   }
 
 }

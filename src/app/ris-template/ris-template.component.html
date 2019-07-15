@@ -1,8 +1,7 @@
-<h1>RIS Template</h1>
 
 <div style="margin-bottom:10px">
     <button pButton type="button" label="Add New" icon="fa fa-plus" style="margin-right:5px" (click)="showAddControl()"></button>
-    <button pButton type="button" label="Preview" icon="fa fa-eye"></button>
+    <button pButton type="button" label="Preview" icon="fa fa-eye" (click)="previewControls()"></button>
 </div>
 
 
@@ -64,7 +63,7 @@
           </div>
       </div>
 
-      <div class="ui-g form-group" *ngIf = "control === 'R' || control === 'D' || control === 'C'">
+      <div class="ui-g form-group" *ngIf = "control === 'radio' || control === 'dropdown' || control === 'checkbox'">
           <div class="ui-g-12 ui-md-2">
               <label for="FnameNls">Options</label>
           </div>
@@ -101,3 +100,5 @@
     <button type="button" pButton icon="pi pi-close" (click)="displayControlInformation = false" label="Cancel" class="ui-button-secondary"></button>
   </p-footer>
 </p-dialog>
+
+<app-sample-from *ngIf = "showPreviewControl ===true" [fields] = "controlList"></app-sample-from>
