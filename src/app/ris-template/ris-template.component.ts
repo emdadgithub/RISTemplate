@@ -23,17 +23,21 @@ export class RisTemplateComponent implements OnInit {
   controlList:DynamicControl[] = [];
   dynamicControl = {} as DynamicControl;
   cols:any;
+
+  showPreviewControl = false;
+
+  reportText: string='';
   constructor() { }
 
   ngOnInit() {
     this.controlTypes = [];
     // this.genders.push({ label: "Select Gender", value: "" });
-    this.controlTypes.push({ label: "Text", value: "T" });
-    this.controlTypes.push({ label: "Text Area", value: "A" });
-    this.controlTypes.push({ label: "Check Box", value: "C" });
-    this.controlTypes.push({ label: "Radio Button", value: "R" });
-    this.controlTypes.push({ label: "Drop Down List", value: "D" });
-    this.controlTypes.push({ label: "Editor", value: "E" });
+    this.controlTypes.push({ label: "Text Box", value: "text" });
+    this.controlTypes.push({ label: "Text Area", value: "textarea" });
+    this.controlTypes.push({ label: "Check Box", value: "checkbox" });
+    this.controlTypes.push({ label: "Radio Button", value: "radio" });
+    this.controlTypes.push({ label: "Drop Down List", value: "dropdown" });
+    this.controlTypes.push({ label: "Editor", value: "editor" });
 
     this.cols = [
       { field: 'type', header: 'Control Type' },
@@ -48,11 +52,12 @@ export class RisTemplateComponent implements OnInit {
 
   addControlValues() {
     let dynamicControl = new DynamicControl();
+    dynamicControl.name = this.controlName;
     dynamicControl.label = this.controlName;
-    dynamicControl.type = this.controlType.label;
+    dynamicControl.type = this.controlType.value;
     dynamicControl.required = true;
     
-    this.dynamicControl.options = this.options;
+    dynamicControl.options = this.options;
     this.controlList.push(dynamicControl);
     console.log(this.dynamicControl);
   }
@@ -72,8 +77,10 @@ export class RisTemplateComponent implements OnInit {
 
   addOptions() {
     let option = new ControlOption();
-    option.label = this.optionName;
     option.key = this.optionName.split(' ')[0].toString().toLowerCase() + Math.floor(Math.random() * 10) + 1;
+    //option.key = "c"
+    option.label = this.optionName;
+
     this.options.push(option);
   }
 
@@ -87,5 +94,10 @@ export class RisTemplateComponent implements OnInit {
     this.options.splice(index,1);
     this.dynamicControl.options = this.options;
     console.log(this.dynamicControl);
+  }
+
+  previewControls() {
+    //this.showPreviewControl
+    this.showPreviewControl = !this.showPreviewControl;
   }
 }
