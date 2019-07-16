@@ -11,6 +11,7 @@ export class DynamicFormBuilderComponent implements OnInit {
   @Output() onSubmit = new EventEmitter();
   @Input() fields: any[] = [];
   form: FormGroup;
+  textForReport: string;
   constructor() { }
 
   ngOnInit() {
@@ -30,4 +31,26 @@ export class DynamicFormBuilderComponent implements OnInit {
     this.form = new FormGroup(fieldsCtrls);
   }
 
+  onSubmitForm() {
+
+    let formValues='';
+    Object.keys(this.form.controls).forEach(key => {
+      
+      formValues+='<strong> '+key+' </strong>' +'  : '+this.form.controls[key].value+'<br/>';
+      // console.log(key);
+      // console.log(this.form.controls[key].value);
+    });
+   this.textForReport=formValues;
+    // console.log('form controls');
+    // console.log(this.form.controls)
+    // console.log(this.form);
+    //     const userStr = JSON.stringify(this.form.value);
+    //  let a= JSON.parse(userStr, (key, value) => {
+    //   if (typeof value === 'string') {
+    //     return value.toUpperCase();
+    //   }
+    //   return value;
+    // });
+    //    this.textForReport=a.key;
+  }
 }

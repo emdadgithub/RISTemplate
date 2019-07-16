@@ -25,6 +25,8 @@ export class RisTemplateComponent implements OnInit {
   cols:any;
 
   showPreviewControl = false;
+
+  reportText: string='';
   constructor() { }
 
   ngOnInit() {
