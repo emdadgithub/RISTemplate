@@ -77,8 +77,9 @@ export class RisTemplateComponent implements OnInit {
 
   addOptions() {
     let option = new ControlOption();
-    option.key = this.optionName.split(' ')[0].toString().toLowerCase() + Math.floor(Math.random() * 10) + 1;
+   // option.key = this.optionName.split(' ')[0].toString().toLowerCase() + Math.floor(Math.random() * 10) + 1;
     //option.key = "c"
+    option.key = this.optionName;
     option.label = this.optionName;
 
     this.options.push(option);
