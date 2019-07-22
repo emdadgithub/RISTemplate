@@ -3,7 +3,7 @@
         <!-- onSubmit.emit(this.form.value) -->
         <form (ngSubmit)="onSubmitForm()" [formGroup]="form" class="form-horizontal">
             <div *ngFor="let field of fields">
-                <field-builder [field]="field" [form]="form"></field-builder>
+                <field-builder [field]="field" [form]="form" (formControlChanged)="handleChange($event)"></field-builder>
             </div>
 
             <button icon="fa fa-check" pButton type="submit"  class="ui-button-info" label="Save"></button>

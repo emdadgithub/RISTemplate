@@ -6,7 +6,7 @@
     </label>
   </div> -->
   <div class="form-check" *ngFor="let opt of field.options">
-    <p-radioButton [id]="field.name" [name]="field.name" [formControlName]="field.name" [value]="opt.key" label="{{opt.label}}"></p-radioButton>
+    <p-radioButton [id]="field.name" [name]="field.name" [formControlName]="field.name" [value]="opt.key" label="{{opt.label}}" (click)="handleChange($event,opt.key)"></p-radioButton>
   </div>
  
 </div> 

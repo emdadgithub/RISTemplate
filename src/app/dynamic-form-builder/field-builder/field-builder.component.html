@@ -23,10 +23,10 @@
       </div>
       <div class="ui-g-12 ui-md-4" [ngSwitch]="field.type">
         <span class="md-inputfield">
-            <textbox *ngSwitchCase="'text'" [field]="field" [form]="form"></textbox>
-            <dropdown *ngSwitchCase="'dropdown'" [field]="field" [form]="form"></dropdown>
+            <textbox *ngSwitchCase="'text'" [field]="field" [form]="form" (formControlChanged)="handleChange($event)" ></textbox>
+            <dropdown *ngSwitchCase="'dropdown'" [field]="field" [form]="form" (formControlChanged)="handleChange($event)"></dropdown>
             <checkbox *ngSwitchCase="'checkbox'" [field]="field" [form]="form"></checkbox>
-            <radio *ngSwitchCase="'radio'" [field]="field" [form]="form"></radio>
+            <radio *ngSwitchCase="'radio'" [field]="field" [form]="form"   (formControlChanged)="handleChange($event)" ></radio>
             <file *ngSwitchCase="'file'" [field]="field" [form]="form"></file>
             <div class="alert alert-danger my-1 p-2 fadeInDown animated" *ngIf="!isValid && isDirty">{{field.label}} is required</div>
         </span>

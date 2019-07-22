@@ -10,6 +10,7 @@ import { RadioComponent } from './dynamic-controls/radio/radio.component';
 import { TextboxComponent } from './dynamic-controls/textbox/textbox.component';
 import {ButtonModule} from 'primeng/button';
 import { RadioButtonModule, DropdownModule, CheckboxModule, InputTextModule, PanelModule, EditorModule } from 'primeng/primeng';
+import { Store } from './Store';
 
 @NgModule({
   imports: [
@@ -34,6 +35,6 @@ import { RadioButtonModule, DropdownModule, CheckboxModule, InputTextModule, Pan
      TextboxComponent,
     ],
   exports:[DynamicFormBuilderComponent],
-  providers: []
+  providers: [Store]
 })
 export class DynamicFormBuilderModule { }

@@ -103,7 +103,7 @@ export class SampleFromComponent implements OnInit {
  
 
   ngOnInit() {
-    debugger;
+   // debugger;
     console.log(this.fields);
   }
 

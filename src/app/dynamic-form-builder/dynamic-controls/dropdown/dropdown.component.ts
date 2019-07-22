@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -10,7 +10,7 @@ export class DropdownComponent implements OnInit {
 
   @Input() field: any = {};
   @Input() form: FormGroup;
-
+  @Output() formControlChanged=new EventEmitter<boolean>(); 
   constructor() {
 
   }
@@ -19,5 +19,7 @@ export class DropdownComponent implements OnInit {
     console.log(this.field);
   }
 
-
+  handleChange(event:any){
+    this.formControlChanged.emit(true);
+  }
 }
