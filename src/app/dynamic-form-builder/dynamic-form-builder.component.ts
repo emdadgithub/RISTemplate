@@ -21,19 +21,28 @@ export class DynamicFormBuilderComponent implements OnInit {
 
   ngOnInit() {
 
-    this.fields.push({
-      type: 'dropdown',
-      name: 'Film',
-      label: 'Film',
-      required: true,
-      options: [
-        { key: 'Option 1', label: 'Option 1' },
-        { key: 'Option 2', label: 'Option 2' },
-        { key: 'Option 3', label: 'Option 3' },
-      ]
-    });
+    if (this.fields.length > 0) {
+      let isFilmExists = this.fields.some(x => x.name === 'Film');
+      if (!isFilmExists) {
 
-    this.loadFormControls();
+        this.fields.push({
+          type: 'dropdown',
+          name: 'Film',
+          label: 'Film',
+          required: true,
+          options: [
+            { key: 'Option 1', label: 'Option 1' },
+            { key: 'Option 2', label: 'Option 2' },
+            { key: 'Option 3', label: 'Option 3' },
+          ]
+        });
+
+      }
+      this.loadFormControls();
+    }
+
+
+
 
     // this.form.controls['Film'].valueChanges.subscribe(data=>{
 
