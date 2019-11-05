@@ -23,8 +23,8 @@ export class DynamicFormBuilderComponent implements OnInit {
 
     if (this.fields.length > 0) {
       let isFilmExists = this.fields.some(x => x.name === 'Film');
-      if (!isFilmExists) {
 
+      if (!isFilmExists) {
         this.fields.push({
           type: 'dropdown',
           name: 'Film',
@@ -40,25 +40,9 @@ export class DynamicFormBuilderComponent implements OnInit {
       }
       this.loadFormControls();
     }
-
-
-
-
-    // this.form.controls['Film'].valueChanges.subscribe(data=>{
-
-    // });
-    // this.onFROMChange();
-    // 
-
-    // this.formState$.subscribe(data => {
-    //   let control = Object.keys(data.controls)
-    //   console.log(control);
-    // })
-    // //    this.formState$.forEach(element => {console.log(element)});
   }
 
   handleChange(event: boolean) {
-    //alert('From Txt');
     if (event) {
       //store form state
       this.store.set('prevAddedControls', this.form);
@@ -177,24 +161,10 @@ export class DynamicFormBuilderComponent implements OnInit {
 
     let formValues = '';
     Object.keys(this.form.controls).forEach(key => {
-
       formValues += '<strong> ' + key + ' </strong>' + '  : ' + this.form.controls[key].value + '<br/>';
-      // console.log(key);
-      // console.log(this.form.controls[key].value);
     });
     this.textForReport = formValues;
     this.loadFormControls();
-    // console.log('form controls');
-    // console.log(this.form.controls)
-    // console.log(this.form);
-    //     const userStr = JSON.stringify(this.form.value);
-    //  let a= JSON.parse(userStr, (key, value) => {
-    //   if (typeof value === 'string') {
-    //     return value.toUpperCase();
-    //   }
-    //   return value;
-    // });
-    //    this.textForReport=a.key;
   }
 
   loadFormControls() {
@@ -212,5 +182,5 @@ export class DynamicFormBuilderComponent implements OnInit {
     }
     this.form = new FormGroup(fieldsCtrls);
   }
-
+  
 }

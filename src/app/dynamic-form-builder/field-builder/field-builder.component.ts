@@ -20,7 +20,6 @@ export class FieldBuilderComponent implements OnInit {
   }
 
   handleChange(event:any){
-    //console.log('from Field builder');
     this.formControlChanged.emit(true);
   }
 }

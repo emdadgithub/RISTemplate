@@ -33,11 +33,11 @@ export class RisTemplateComponent implements OnInit {
     this.controlTypes = [];
     // this.genders.push({ label: "Select Gender", value: "" });
     this.controlTypes.push({ label: "Text Box", value: "text" });
-    this.controlTypes.push({ label: "Text Area", value: "textarea" });
+   // this.controlTypes.push({ label: "Text Area", value: "textarea" });
     this.controlTypes.push({ label: "Check Box", value: "checkbox" });
     this.controlTypes.push({ label: "Radio Button", value: "radio" });
     this.controlTypes.push({ label: "Drop Down List", value: "dropdown" });
-    this.controlTypes.push({ label: "Editor", value: "editor" });
+   // this.controlTypes.push({ label: "Editor", value: "editor" });
 
     this.cols = [
       { field: 'type', header: 'Control Type' },
@@ -98,7 +98,6 @@ export class RisTemplateComponent implements OnInit {
   }
 
   previewControls() {
-    //this.showPreviewControl
     this.showPreviewControl = !this.showPreviewControl;
   }
 }
